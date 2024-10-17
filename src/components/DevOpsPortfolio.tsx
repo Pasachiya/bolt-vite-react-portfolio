@@ -1,5 +1,6 @@
 import React from 'react'
 import { Server, Cloud, GitBranch, Database } from 'lucide-react'
+import Certificates from './Certificates'
 
 const DevOpsPortfolio: React.FC = () => {
   const skills = [
@@ -27,13 +28,19 @@ const DevOpsPortfolio: React.FC = () => {
     },
   ]
 
+  const devOpsCertificates = [
+    { name: 'AWS Certified DevOps Engineer - Professional', issuer: 'Amazon Web Services' },
+    { name: 'Certified Kubernetes Administrator (CKA)', issuer: 'Cloud Native Computing Foundation' },
+    { name: 'Docker Certified Associate', issuer: 'Docker' },
+  ]
+
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 animate-fadeIn">
       <section>
         <h2 className="text-3xl font-bold mb-6">DevOps Skills</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {skills.map((skill, index) => (
-            <div key={index} className="flex items-center space-x-2 bg-gray-700 p-4 rounded-lg">
+            <div key={index} className="flex items-center space-x-2 bg-gray-700 bg-opacity-50 p-4 rounded-lg backdrop-blur-md transition duration-300 transform hover:scale-105">
               {skill.icon}
               <span>{skill.name}</span>
             </div>
@@ -45,7 +52,7 @@ const DevOpsPortfolio: React.FC = () => {
         <h2 className="text-3xl font-bold mb-6">DevOps Projects</h2>
         <div className="space-y-8">
           {projects.map((project, index) => (
-            <div key={index} className="bg-gray-700 p-6 rounded-lg">
+            <div key={index} className="bg-gray-700 bg-opacity-50 p-6 rounded-lg backdrop-blur-md transition duration-300 transform hover:scale-105">
               <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
               <p className="mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2">
@@ -59,6 +66,8 @@ const DevOpsPortfolio: React.FC = () => {
           ))}
         </div>
       </section>
+
+      <Certificates certificates={devOpsCertificates} />
     </div>
   )
 }
